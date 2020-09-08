@@ -7,14 +7,14 @@ import (
 /**
 Trimmed Mean Unit Tests
 
-*Agenda* p is smallest and largest values ommitted
+*Agenda* p is smallest and largest values omitted
 
 1. Trimmed Mean should return error when input array is empty.
 2. Trimmed Mean should return error when input array contains { 0, 1 } and p = 1
-4. Trimmed Mean should return error when input array contains { 0, 1, 2 } and p = 1
-5. Trimmed Mean should return error when input array contains { 0, 1, 2 } and p = 2
-6. Trimmed Mean should return 1 when input array contains { 0, 1, 2 } and p = 1
-7. Trimmed Mean should return 2 when input array contains { 1, 2, 3 } and p = 1
+3. Trimmed Mean should return error when input array contains { 0, 1, 2 } and p = 1
+4. Trimmed Mean should return error when input array contains { 0, 1, 2 } and p = 2
+5. Trimmed Mean should return 1 when input array contains { 0, 1, 2 } and p = 1
+6. Trimmed Mean should return 2.5 when input array contains { 0, 2, 4, 3 } and p = 1
 */
 
 func TestTrimmedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
