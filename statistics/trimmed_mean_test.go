@@ -73,7 +73,7 @@ func TestTrimmedMeanShouldReturnTwoPointFiveAndTrimValueIsOne(t *testing.T) {
 	result, _ := TrimmedMean(values, trimValue)
 
 	if 2.5 != result {
-		t.Errorf("TrimmedMean function calculate %f for { 0, 2, 4, 3 }, expected 3", result)
+		t.Errorf("TrimmedMean function calculate %f for { 0, 2, 4, 3 }, expected 2.5", result)
 	}
 
 }
