@@ -1,6 +1,9 @@
 package statistics
 
-import "errors"
+import (
+	"errors"
+	"sort"
+)
 
 func TrimmedMean(values []float64, trimValue uint) (float64, error) {
 
@@ -17,6 +20,8 @@ func TrimmedMean(values []float64, trimValue uint) (float64, error) {
 	}
 
 	var result = float64(0)
+
+	sort.Float64s(values)
 
 	trimmedValues := values[trimValue:(uint(sizeOfValues) - trimValue)]
 
