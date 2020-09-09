@@ -11,8 +11,10 @@ Trimmed Mean Unit Tests
 3. Weighted Mean should return error when sum of all weights is zero
 4. Weighted Mean should return error when size of inputs and weights is different
 5. Weighted Mean should return 1 when weights are { 1 } and input values { 1 }
-6. Weighted Mean should return 2,666666667  when wights are { 1, 2, 3, 4, 5, 6 } and input values { 6, 5, 4, 3, 2, 1 }
+6. Weighted Mean should return 2,666666667  when weights are { 1, 2, 3, 4, 5, 6 } and input values { 6, 5, 4, 3, 2, 1 }
 */
+
+const EPSILON float64 = 0.00000001
 
 func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
@@ -68,5 +70,17 @@ func TestWeightedMeanShouldReturnOne(t *testing.T) {
 
 	if float64(1) != result {
 		t.Errorf("WeightedMean expected to return 1, but returned %f ", result)
+	}
+}
+
+func TestWeightedMeanShouldReturnTwoPointSix(t *testing.T) {
+
+	var inputs = []float64{6, 5, 4, 3, 2, 1}
+	var weights = []float64{1, 2, 3, 4, 5, 6}
+
+	result, _ := WeightedMean(inputs, weights)
+
+	if result-2.666666 < EPSILON {
+		t.Errorf("WeightedMean expected to return 2.666667 , but returned %f ", result)
 	}
 }
