@@ -20,5 +20,13 @@ func WeightedMean(inputs []float64, weights []float64) (float64, error) {
 		return 0, errors.New("division by zero - sum of all weights is zero")
 	}
 
-	return 0, nil
+	var sumOfEveryValueByWeight = float64(0)
+	for index, value := range inputs {
+		weight := weights[index]
+		sumOfEveryValueByWeight += value * weight
+	}
+
+	result := sumOfEveryValueByWeight / sumOfWeights
+
+	return result, nil
 }
