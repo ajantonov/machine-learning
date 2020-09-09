@@ -3,12 +3,19 @@ package statistics
 import "errors"
 
 func WeightedMean(inputs []float64, weights []float64) (float64, error) {
-	if 0 == len(inputs) {
+
+	sizeOfInputs := len(inputs)
+	if 0 == sizeOfInputs {
 		return 0, errors.New("empty inputs parameter")
 	}
 
-	if 0 == len(weights) {
+	sizeOfWeights := len(weights)
+	if 0 == sizeOfWeights {
 		return 0, errors.New("empty weights parameter")
+	}
+
+	if sizeOfInputs != sizeOfWeights {
+		return 0, errors.New(" two input arrays is with different length ")
 	}
 
 	var sumOfWeights = float64(0)
@@ -22,8 +29,7 @@ func WeightedMean(inputs []float64, weights []float64) (float64, error) {
 
 	var sumOfEveryValueByWeight = float64(0)
 	for index, value := range inputs {
-		weight := weights[index]
-		sumOfEveryValueByWeight += value * weight
+		sumOfEveryValueByWeight += value * weights[index]
 	}
 
 	result := sumOfEveryValueByWeight / sumOfWeights

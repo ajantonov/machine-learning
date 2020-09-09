@@ -48,6 +48,17 @@ func TestWeightedMeanShouldReturnErrorWhenSumOfAllWeightIsZero(t *testing.T) {
 	}
 }
 
+func TestWeightedMeanShouldReturnErrorWhenSizeOfArraysIsDifferent(t *testing.T) {
+	var inputs = []float64{1, 2}
+	var weights = []float64{1, 1, 0}
+
+	_, err := WeightedMean(inputs, weights)
+
+	if nil == err {
+		t.Error("Failed to return error, when size of input arrays is different!")
+	}
+}
+
 func TestWeightedMeanShouldReturnOne(t *testing.T) {
 
 	var inputs = []float64{1}
