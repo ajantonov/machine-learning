@@ -14,8 +14,6 @@ Trimmed Mean Unit Tests
 6. Weighted Mean should return 2,666666667  when weights are { 1, 2, 3, 4, 5, 6 } and input values { 6, 5, 4, 3, 2, 1 }
 */
 
-const EPSILON float64 = 0.00000001
-
 func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
 	var inputs []float64
@@ -68,7 +66,7 @@ func TestWeightedMeanShouldReturnOne(t *testing.T) {
 
 	result, _ := WeightedMean(inputs, weights)
 
-	if float64(1) != result {
+	if !FloatEquals(1, result) {
 		t.Errorf("WeightedMean expected to return 1, but returned %f ", result)
 	}
 }
@@ -80,7 +78,7 @@ func TestWeightedMeanShouldReturnTwoPointSix(t *testing.T) {
 
 	result, _ := WeightedMean(inputs, weights)
 
-	if result-2.666666 < EPSILON {
+	if !FloatEquals(2.666667, result) {
 		t.Errorf("WeightedMean expected to return 2.666667 , but returned %f ", result)
 	}
 }

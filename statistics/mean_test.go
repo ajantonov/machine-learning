@@ -39,7 +39,7 @@ func TestMeanShouldReturnTwoWhenInputArrayContainsRangeFromOneToThree(t *testing
 
 	result, _ := Mean(values)
 
-	if float64(2) != result {
+	if !FloatEquals(2, result) {
 		t.Errorf("Mean function should return result 2, the result is %f", result)
 	}
 }
