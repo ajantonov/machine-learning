@@ -60,7 +60,7 @@ func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrim
 
 	result, err := TrimmedMean(values, trimValue)
 
-	if float64(1) != result {
+	if FloatEquals(1.01, result) {
 		t.Errorf("TrimmedMean function calculate %f for { 0, 1, 2 }, expected 1 ! Error %s ", result, err)
 	}
 }
@@ -72,7 +72,7 @@ func TestTrimmedMeanShouldReturnTwoPointFiveAndTrimValueIsOne(t *testing.T) {
 
 	result, _ := TrimmedMean(values, trimValue)
 
-	if 2.5 != result {
+	if !FloatEquals(2.5, result) {
 		t.Errorf("TrimmedMean function calculate %f for { 0, 2, 4, 3 }, expected 2.5", result)
 	}
 
