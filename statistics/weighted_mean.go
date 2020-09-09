@@ -2,6 +2,13 @@ package statistics
 
 import "errors"
 
+/*
+Weighted mean
+	The sum of all values times a weight divided by the sum of the wieghts.
+
+	Synonymous
+		weighted average
+*/
 func WeightedMean(inputs []float64, weights []float64) (float64, error) {
 
 	sizeOfInputs := len(inputs)

@@ -5,6 +5,13 @@ import (
 	"sort"
 )
 
+/*
+Trimmed mean
+	The average of all values after dropping a fixed number extreme values.
+
+	Synonymous
+		truncated mean
+*/
 func TrimmedMean(values []float64, trimValue uint) (float64, error) {
 
 	sizeOfValues := len(values)

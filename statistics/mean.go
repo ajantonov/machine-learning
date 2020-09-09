@@ -2,6 +2,13 @@ package statistics
 
 import "errors"
 
+/*
+Mean
+	The sum of all values divided by the number of values.
+
+	Synonymous
+		average
+*/
 func Mean(values []float64) (float64, error) {
 
 	size := len(values)
