@@ -27,7 +27,6 @@ func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 }
 
 func TestWeightedMeanShouldReturnErrorWhenWeightsArrayIsEmpty(t *testing.T) {
-
 	var inputs = []float64{1}
 	var weights []float64
 
@@ -35,5 +34,16 @@ func TestWeightedMeanShouldReturnErrorWhenWeightsArrayIsEmpty(t *testing.T) {
 
 	if nil == err {
 		t.Error("Failed to return error, when weights array is empty!")
+	}
+}
+
+func TestWeightedMeanShouldReturnErrorWhenSumOfAllWeightIsZero(t *testing.T) {
+	var inputs = []float64{1, 2, 3}
+	var weights = []float64{1, -1, 0}
+
+	_, err := WeightedMean(inputs, weights)
+
+	if nil == err {
+		t.Error("Failed to return error, when sum of all weights is empty!")
 	}
 }
