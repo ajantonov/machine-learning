@@ -7,7 +7,7 @@ import (
 /**
 MeanAbsoluteDeviation Unit Tests
 1. Should return error when array is empty  -  TestMeanAbsoluteDeviationShouldReturnErrorWhenSamplesIsZero
-2. Should return result 1.33 when array has elements { 1, 4, 4 } - TestMeanShouldReturnOneWhenArrayContainsOne
+2. Should return result 1.33 when array has elements { 1, 4, 4 } - TestMeanAbsoluteDeviationShouldReturnValidResult
 **/
 func TestMeanAbsoluteDeviationShouldReturnErrorWhenSamplesIsZero(t *testing.T) {
 
