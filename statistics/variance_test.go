@@ -5,7 +5,7 @@ import (
 )
 
 /**
-Mean Unit Tests
+Variance Unit Tests
 1. Should return error when array is empty  - TestVarianceShouldFailWhenHasSmallerOrEqualThanOneSample
 2. Should return result zero when array has { 1, 1 } elements - TestVarianceShouldReturnValidResponseForTwoSamples
 3. Should return result zero when array has { 1, 2, 3, 4, 5 } elements - TestVarianceShouldReturnValidResponseForMoreSamples
