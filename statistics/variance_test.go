@@ -8,7 +8,7 @@ import (
 Variance Unit Tests
 1. Should return error when array is empty  - TestVarianceShouldFailWhenHasSmallerOrEqualThanOneSample
 2. Should return result zero when array has { 1, 1 } elements - TestVarianceShouldReturnValidResponseForTwoSamples
-3. Should return result zero when array has { 1, 2, 3, 4, 5, 6 } elements - TestVarianceShouldReturnValidResponseForMoreSamples
+3. Should return result 33.2 when array has { 17, 15, 23, 7, 9, 13 } elements - TestVarianceShouldReturnValidResponseForMoreSamples
 **/
 func TestVarianceShouldFailWhenHasSmallerOrEqualThanOneSample(t *testing.T) {
 
