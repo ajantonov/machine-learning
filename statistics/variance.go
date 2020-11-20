@@ -16,7 +16,7 @@ func Variance(samples []float64, mean float64) (float64, error) {
 	var result float64
 
 	for _, value := range samples {
-		result += value - mean
+		result += (value - mean) * (value - mean)
 	}
 	result /= float64(size - 1)
 
