@@ -12,7 +12,6 @@ Median
 	Synonymous
 		50th percentile
 */
-
 func Median(values []float64) (float64, error) {
 
 	sizeOfValues := len(values)

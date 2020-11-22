@@ -5,6 +5,11 @@ import (
 	"math"
 )
 
+/*
+Mean absolute deviation
+	The mean of the absolute value of the deviations from the mean.
+	Synonyms l1-norm, Manhattan norm
+*/
 func MeanAbsoluteDeviation(samples []float64, mean float64) (float64, error) {
 
 	size := len(samples)
