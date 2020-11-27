@@ -4,14 +4,22 @@ import (
 	"math"
 )
 
-const EPSILON float64 = 0.000001
+const EPSILON float64 = 0.0001
 
 /*
 	FloatEquals - unit test helper function
 */
-func FloatEquals(a, b float64) bool {
-	if math.Abs(a-b) < EPSILON {
-		println(math.Abs(a - b))
+func FloatEquals(leftVariable, rightVariable float64) bool {
+	if math.Abs(leftVariable-rightVariable) < EPSILON {
+		println(math.Abs(leftVariable - rightVariable))
+		return true
+	}
+	return false
+}
+
+func FloatEqualsWithEpsilon(leftVariable, rightVariable float64, epsilon float64) bool {
+	if math.Abs(leftVariable-rightVariable) < epsilon {
+		println(math.Abs(leftVariable - rightVariable))
 		return true
 	}
 	return false
