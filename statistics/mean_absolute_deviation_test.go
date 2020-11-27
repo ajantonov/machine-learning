@@ -28,7 +28,7 @@ func TestMeanAbsoluteDeviationShouldReturnValidResult(t *testing.T) {
 
 	result, _ := MeanAbsoluteDeviation(samples, mean)
 
-	if !FloatEquals(result, 1.33) {
+	if !FloatEqualsWithEpsilon(result, 1.33, 0.004) {
 		t.Errorf("Failed to return valid result! Expected value 1.33 result : %f !", result)
 	}
 }

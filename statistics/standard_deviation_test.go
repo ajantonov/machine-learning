@@ -10,7 +10,7 @@ func TestStandardDeviationShouldReturnExpectedResult(t *testing.T) {
 
 	result, _ := StandardDeviation(samples)
 
-	if !FloatEquals(result, 420.96) {
+	if !FloatEqualsWithEpsilon(result, 420.96, 0.003) {
 		t.Errorf("Failed to caclulate standard deviation! Expected : 420.96 Result : %f ", result)
 	}
 }
