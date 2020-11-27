@@ -4,7 +4,7 @@ import (
 	"math"
 )
 
-const EPSILON float64 = 0.000001
+const EPSILON float64 = 0.01
 
 /*
 	FloatEquals - unit test helper function
