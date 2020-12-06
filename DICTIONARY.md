@@ -58,7 +58,7 @@
     The sum of all values divided by the number of values. 
     Synonyms 
         average 
-
+       
 ###Weighted mean 
     The sum of all values times a weight divided by the sum of the weights. 
     Synonyms
