@@ -77,11 +77,19 @@
     Synonyms 
         truncated mean 
 
-###Robust 
+### Robust
+
     Not sensitive to extreme values. 
         Synonyms resistant 
 
-###Outlier 
+### Outlier
+
     A data value that is very different from most of the data. 
     Synonyms 
         extreme value
+
+### Deviations
+
+    The difference between the observed values and the estimate of location
+    Synonymous
+        errors, residuals
