@@ -1,6 +1,7 @@
 package statistics
 
 import (
+	"golang.org/x/exp/errors/fmt"
 	"testing"
 )
 
@@ -23,17 +24,20 @@ func TestShouldReturnErrorWhenOutputsParameterIsSetToZero(t *testing.T) {
 	}
 }
 
-/*
-
 func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficient(t *testing.T) {
 
-	if !FloatEqualsWithEpsilon(alphaResult, float64(0), 0.0001) &&
-		!FloatEqualsWithEpsilon(betaResult, float64(0), 0.0001) {
-		t.Errorf("Failed to calculate alpha = 23.4227 and beta = 167.6829 for linear regression alpha result = %f beta result = %f ", alphaResult, betaResult)
+	alpha, beta, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 6, 9})
+
+	fmt.Print(">>>>>>", alpha)
+	if !FloatEqualsWithEpsilon(alpha, float64(3), 0.0001) ||
+		!FloatEqualsWithEpsilon(beta, float64(0), 0.0001) ||
+		err != nil {
+		t.Errorf("Failed to calculate alpha = 3 and beta = 0 for linear regression alpha result = %f beta result = %f ", alpha, beta)
 	}
 
 }
 
+/*
 func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
 
 	if !FloatEqualsWithEpsilon(alphaResult, float64(0), 0.0001) &&
