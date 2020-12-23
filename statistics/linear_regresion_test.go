@@ -34,7 +34,20 @@ func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficie
 	}
 }
 
+func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
+
+	alpha, beta, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 3, 3})
+
+	if !FloatEqualsWithEpsilon(alpha, float64(0), 0.0001) ||
+		!FloatEqualsWithEpsilon(beta, float64(3), 0.0001) ||
+		err != nil {
+		t.Errorf("Failed to calculate alpha = 0 and beta = 3 for linear regression alpha result = %f beta result = %f ", alpha, beta)
+	}
+}
+
 /*
+Add test for different size of inputs and outputs
+
 func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
 
 	if !FloatEqualsWithEpsilon(alphaResult, float64(0), 0.0001) &&

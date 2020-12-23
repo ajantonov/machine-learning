@@ -19,7 +19,7 @@ func LinearRegression(inputs []float64, outputs []float64) (alpha float64, beta 
 	}
 
 	// Calculate mean of outputs
-	meanOfOutputs, err := Mean(inputs)
+	meanOfOutputs, err := Mean(outputs)
 	if nil != err {
 		return float64(0), float64(0), errors.New("failed to calculate mean for outputs")
 	}
@@ -36,6 +36,7 @@ func LinearRegression(inputs []float64, outputs []float64) (alpha float64, beta 
 	alpha = numerator / denominator
 
 	// Calculate beta
+	beta = meanOfOutputs - (alpha * meanOfInputs)
 
-	return alpha, float64(0), nil
+	return alpha, beta, nil
 }
