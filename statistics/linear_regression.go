@@ -12,6 +12,10 @@ func LinearRegression(inputs []float64, outputs []float64) (alpha float64, beta 
 		return float64(0), float64(0), errors.New("invalid parameter outputs")
 	}
 
+	if len(inputs) != len(outputs) {
+		return float64(0), float64(0), errors.New("different size of inputs and outputs")
+	}
+
 	// Calculate mean of inputs
 	meanOfInputs, err := Mean(inputs)
 	if nil != err {

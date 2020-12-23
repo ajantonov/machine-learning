@@ -23,6 +23,15 @@ func TestShouldReturnErrorWhenOutputsParameterIsSetToZero(t *testing.T) {
 	}
 }
 
+func TestShouldReturnErrorWhenSizeOfInputsAndOutputsIsNotEqual(t *testing.T) {
+
+	_, _, err := LinearRegression([]float64{1}, []float64{1, 2})
+
+	if err.Error() != "different size of inputs and outputs" {
+		t.Error("Failed to validate input values and output values!")
+	}
+}
+
 func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficient(t *testing.T) {
 
 	alpha, beta, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 6, 9})
@@ -46,7 +55,7 @@ func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *te
 }
 
 /*
-Add test for different size of inputs and outputs
+
 
 func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
 
