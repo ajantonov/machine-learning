@@ -8,18 +8,17 @@ func TestShouldReturnErrorWhenInputsParameterIsSetToZero(t *testing.T) {
 
 	_, _, err := LinearRegression(nil, []float64{0})
 
-	if err.Error() != "invalid parameter inputs" {
+	if err.Error() != "invalid parameter x" {
 		t.Error("Failed to return error when inputs parameter is with size zero!")
 	}
-
 }
 
 func TestShouldReturnErrorWhenOutputsParameterIsSetToZero(t *testing.T) {
 
 	_, _, err := LinearRegression([]float64{0}, nil)
 
-	if err.Error() != "invalid parameter outputs" {
-		t.Error("Failed to return error when outputs parameter is with size zero!")
+	if err.Error() != "invalid parameter y" {
+		t.Error("Failed to return error when y parameter is with size zero!")
 	}
 }
 
@@ -27,7 +26,7 @@ func TestShouldReturnErrorWhenSizeOfInputsAndOutputsIsNotEqual(t *testing.T) {
 
 	_, _, err := LinearRegression([]float64{1}, []float64{1, 2})
 
-	if err.Error() != "different size of inputs and outputs" {
+	if err.Error() != "different size of x and y" {
 		t.Error("Failed to validate input values and output values!")
 	}
 }

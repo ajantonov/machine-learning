@@ -2,45 +2,45 @@ package statistics
 
 import "errors"
 
-func LinearRegression(inputs []float64, outputs []float64) (alpha float64, beta float64, err error) {
+func LinearRegression(x []float64, y []float64) (slope float64, intercept float64, err error) {
 
-	if 0 == len(inputs) {
-		return float64(0), float64(0), errors.New("invalid parameter inputs")
+	if 0 == len(x) {
+		return float64(0), float64(0), errors.New("invalid parameter x")
 	}
 
-	if 0 == len(outputs) {
-		return float64(0), float64(0), errors.New("invalid parameter outputs")
+	if 0 == len(y) {
+		return float64(0), float64(0), errors.New("invalid parameter y")
 	}
 
-	if len(inputs) != len(outputs) {
-		return float64(0), float64(0), errors.New("different size of inputs and outputs")
+	if len(x) != len(y) {
+		return float64(0), float64(0), errors.New("different size of x and y")
 	}
 
-	// Calculate mean of inputs
-	meanOfInputs, err := Mean(inputs)
+	// Calculate mean of x
+	meanOfInputs, err := Mean(x)
 	if nil != err {
-		return float64(0), float64(0), errors.New("failed to calculate mean for inputs")
+		return float64(0), float64(0), errors.New("failed to calculate mean for x")
 	}
 
-	// Calculate mean of outputs
-	meanOfOutputs, err := Mean(outputs)
+	// Calculate mean of y
+	meanOfOutputs, err := Mean(y)
 	if nil != err {
-		return float64(0), float64(0), errors.New("failed to calculate mean for outputs")
+		return float64(0), float64(0), errors.New("failed to calculate mean for y")
 	}
 
 	var numerator = float64(0)
 	var denominator = float64(0)
 
-	// Calculate alpha
-	for index := 0; index < len(inputs); index++ {
-		numerator += (inputs[index] - meanOfInputs) * (outputs[index] - meanOfOutputs)
-		denominator += (inputs[index] - meanOfInputs) * (inputs[index] - meanOfInputs)
+	// Calculate slope
+	for index := 0; index < len(x); index++ {
+		numerator += (x[index] - meanOfInputs) * (y[index] - meanOfOutputs)
+		denominator += (x[index] - meanOfInputs) * (x[index] - meanOfInputs)
 	}
 
-	alpha = numerator / denominator
+	slope = numerator / denominator
 
-	// Calculate beta
-	beta = meanOfOutputs - (alpha * meanOfInputs)
+	// Calculate intercept
+	intercept = meanOfOutputs - (slope * meanOfInputs)
 
-	return alpha, beta, nil
+	return slope, intercept, nil
 }
