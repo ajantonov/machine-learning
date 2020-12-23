@@ -27,29 +27,29 @@ func TestShouldReturnErrorWhenSizeOfInputsAndOutputsIsNotEqual(t *testing.T) {
 	_, _, err := LinearRegression([]float64{1}, []float64{1, 2})
 
 	if err.Error() != "different size of x and y" {
-		t.Error("Failed to validate input values and output values!")
+		t.Error("Failed to validate x and y parameters!")
 	}
 }
 
 func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficient(t *testing.T) {
 
-	alpha, beta, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 6, 9})
+	slope, intercept, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 6, 9})
 
-	if !FloatEqualsWithEpsilon(alpha, float64(3), 0.0001) ||
-		!FloatEqualsWithEpsilon(beta, float64(0), 0.0001) ||
+	if !FloatEqualsWithEpsilon(slope, float64(3), 0.0001) ||
+		!FloatEqualsWithEpsilon(intercept, float64(0), 0.0001) ||
 		err != nil {
-		t.Errorf("Failed to calculate alpha = 3 and beta = 0 for linear regression alpha result = %f beta result = %f ", alpha, beta)
+		t.Errorf("Failed to calculate slope = 3 and intercept = 0 for linear regression slope result = %f intercept result = %f ", slope, intercept)
 	}
 }
 
 func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
 
-	alpha, beta, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 3, 3})
+	slope, intercept, err := LinearRegression([]float64{1, 2, 3}, []float64{3, 3, 3})
 
-	if !FloatEqualsWithEpsilon(alpha, float64(0), 0.0001) ||
-		!FloatEqualsWithEpsilon(beta, float64(3), 0.0001) ||
+	if !FloatEqualsWithEpsilon(slope, float64(0), 0.0001) ||
+		!FloatEqualsWithEpsilon(intercept, float64(3), 0.0001) ||
 		err != nil {
-		t.Errorf("Failed to calculate alpha = 0 and beta = 3 for linear regression alpha result = %f beta result = %f ", alpha, beta)
+		t.Errorf("Failed to calculate slope = 0 and intercept = 3 for linear regression slope result = %f intercept result = %f ", slope, intercept)
 	}
 }
 
