@@ -1,3 +1,6 @@
+/*
+ This package contains fundamental functions used for statistics learning.
+*/
 package statistics
 
 import "errors"

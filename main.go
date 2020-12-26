@@ -1,4 +1,4 @@
-package machine_learning
+package main
 
 import "fmt"
 
