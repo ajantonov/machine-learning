@@ -1,6 +1,8 @@
 package statistics
 
 import (
+	"fmt"
+	"gonum.org/v1/gonum/mat"
 	"math"
 )
 
@@ -23,4 +25,9 @@ func FloatEqualsWithEpsilon(leftVariable, rightVariable float64, epsilon float64
 		return true
 	}
 	return false
+}
+
+func matPrint(X mat.Matrix) {
+	fa := mat.Formatted(X, mat.Prefix(""), mat.Squeeze())
+	fmt.Printf("%v\n", fa)
 }
