@@ -16,33 +16,38 @@ Useful links :
 
 */
 func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
-	t.Skip("[WIP]")
-	//calculatedCoefficientsAreTrue := true
-	//
-	//betaTwo := float64(0)
-	//betaOne := float64(0)
-	//betaZero := float64(0)
+	calculatedCoefficientsAreRight := false
+	betaTwo := float64(0)
+	betaOne := float64(0)
+	betaZero := float64(0)
 
 	// Step 0 : Подготвяне на матрица X
 	// y = 50 + 10x1 + 7x2
 	// x0 = { 50, 50, 50, 50, 50 } - bias
 	// x1 = {  0,  1,  2,  3,  4 } x 10
 	// x2 = {  4,  3,  2,  1,  0 } x 7
-	// y =  { 78, 81, 84, 87, 90 }
 	x := []float64{4, 0, 50, 3, 1, 50, 2, 2, 50, 1, 3, 50, 0, 4, 50}
-	X := mat.NewDense(5, 3, x)
-	matPrint(X)
+	matX := mat.NewDense(5, 3, x)
+	matPrint(matX)
 
 	// Step 1 : Подготвяне на матрица Y
 	y := []float64{78, 81, 84, 87, 90}
-	Y := mat.NewDense(5, 1, y)
-	matPrint(Y)
+	matY := mat.NewDense(5, 1, y)
+	matPrint(matY)
 
 	// Step 2 : Транспониране на матрица
 	// -> X.T()
+	matPrint(matX.T())
 
 	// Step 3 : Смятане на обратна матрица
 	// func (m *Dense) Inverse(a Matrix) error
+
+	//var matInverted mat.Dense
+	//err := matInverted.Inverse(matX)
+	//if err != nil {
+	//	panic(err)
+	//}
+	//fmt.Printf("%v\n", mat.Formatted(&matInverted, mat.Prefix("")))
 
 	// Step 4 : Умножение на матрици
 	// Multiplication is pretty straightforward
@@ -52,10 +57,14 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 	// matPrint(D)
 	// Step 5 : Смятане на израза за матрици
 
-	//if calculatedCoefficientsAreTrue {
-	//	t.Errorf("Failed to calculate predictors %f :  %f : %f expected 7 : 10 : 50 ",
-	//					betaTwo, betaOne, betaZero)
-	//}
+	calculatedCoefficientsAreRight = FloatEqualsWithEpsilon(7, betaTwo, 0.1) &&
+		FloatEqualsWithEpsilon(10, betaOne, 0.1) &&
+		FloatEqualsWithEpsilon(50, betaZero, 0.1)
+
+	if !calculatedCoefficientsAreRight {
+		t.Errorf("Failed to calculate predictors %f :  %f : %f expected 7 : 10 : 50 ",
+			betaTwo, betaOne, betaZero)
+	}
 }
 
 /*
