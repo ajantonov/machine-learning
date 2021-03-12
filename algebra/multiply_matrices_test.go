@@ -32,10 +32,8 @@ func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
 
 func TestShouldMultiply2by2MatricesCorrectly(t *testing.T) {
 
-	matrixA := [][]float64{{1, 2},
-		{3, 4}}
-	matrixB := [][]float64{{1, 2},
-		{3, 4}}
+	matrixA := [][]float64{{1, 2}, {3, 4}}
+	matrixB := [][]float64{{1, 2}, {3, 4}}
 
 	matrixResult, err := MultiplyMatrices(matrixA, matrixB)
 
