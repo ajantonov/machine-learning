@@ -1,7 +1,8 @@
 package statistics
 
 import (
-	"gonum.org/v1/gonum/mat"
+	"fmt"
+	"github.com/ajantonov/machine-learning/algebra"
 	"testing"
 )
 
@@ -21,41 +22,51 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 	betaOne := float64(0)
 	betaZero := float64(0)
 
-	// Step 0 : Подготвяне на матрица X
-	// y = 50 + 10x1 + 7x2
-	// x0 = { 50, 50, 50, 50, 50 } - bias
-	// x1 = {  0,  1,  2,  3,  4 } x 10
-	// x2 = {  4,  3,  2,  1,  0 } x 7
-	x := []float64{4, 0, 50, 3, 1, 50, 2, 2, 50, 1, 3, 50, 0, 4, 50}
-	matX := mat.NewDense(5, 3, x)
-	matPrint(matX)
+	matrixX := algebra.CreateMatrix(6, 3)
+	matrixX[0][0] = 1
+	matrixX[0][1] = 7
+	matrixX[0][2] = 560
+	matrixX[1][0] = 1
+	matrixX[1][1] = 3
+	matrixX[1][2] = 220
+	matrixX[2][0] = 1
+	matrixX[2][1] = 3
+	matrixX[2][2] = 340
+	matrixX[3][0] = 1
+	matrixX[3][1] = 4
+	matrixX[3][2] = 80
+	matrixX[4][0] = 1
+	matrixX[4][1] = 6
+	matrixX[4][2] = 150
+	matrixX[5][0] = 1
+	matrixX[5][1] = 7
+	matrixX[5][2] = 330
 
-	// Step 1 : Подготвяне на матрица Y
-	y := []float64{78, 81, 84, 87, 90}
-	matY := mat.NewDense(5, 1, y)
-	matPrint(matY)
+	algebra.PrintMatrix(matrixX)
 
-	// Step 2 : Транспониране на матрица
-	// -> X.T()
-	matPrint(matX.T())
+	// Step 1 : Подготвяне на матрица matrixY
+	matrixY := algebra.CreateMatrix(6, 1)
+	matrixY[0][0] = 16.68
+	matrixY[1][0] = 11.50
+	matrixY[2][0] = 12.03
+	matrixY[3][0] = 14.88
+	matrixY[4][0] = 13.75
+	matrixY[5][0] = 18.11
+	algebra.PrintMatrix(matrixY)
 
-	// Step 3 : Смятане на обратна матрица
-	// func (m *Dense) Inverse(a Matrix) error
+	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
+	if err != nil {
+		fmt.Println("Error ", err)
+		panic(err)
+	}
+	algebra.PrintMatrix(transposedMatrixX)
 
-	//var matInverted mat.Dense
-	//err := matInverted.Inverse(matX)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//fmt.Printf("%v\n", mat.Formatted(&matInverted, mat.Prefix("")))
-
-	// Step 4 : Умножение на матрици
-	// Multiplication is pretty straightforward
-	// D := mat.NewDense(3, 3, nil)
-	// D.Product(A, B.T())
-	// println("A * B'")
-	// matPrint(D)
-	// Step 5 : Смятане на израза за матрици
+	multipliedMatricesX, err := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
+	if err != nil {
+		fmt.Println("Error ", err)
+		panic(err)
+	}
+	algebra.PrintMatrix(multipliedMatricesX)
 
 	calculatedCoefficientsAreRight = FloatEqualsWithEpsilon(7, betaTwo, 0.1) &&
 		FloatEqualsWithEpsilon(10, betaOne, 0.1) &&
