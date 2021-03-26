@@ -33,6 +33,6 @@ func TestShouldCalculate3by3MatrixDeterminantSuccessfully(t *testing.T) {
 
 	var determinant = Determinant(matrix, len(matrix))
 	if !FloatEquals(determinant, 0) {
-		t.Error("Failed to calculate Determinant for 2x2 matrix expected : -2 get : ", determinant)
+		t.Error("Failed to calculate Determinant for 3x3 matrix expected : -2 get : ", determinant)
 	}
 }
