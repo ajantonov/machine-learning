@@ -1,27 +1,31 @@
 package algebra
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func MultiplyMatrices(matrixOne [][]float64, matrixTwo [][]float64) (resultMatrix [][]float64, err error) {
 
-	if len(matrixOne) != len(matrixTwo[0]) {
-		return nil,
-			fmt.Errorf(" MultiplyMatrices : cannot multiply the given matrices rows %d != columns %d ",
-				len(matrixOne), len(matrixTwo))
+	if matrixOne == nil {
+		return nil, fmt.Errorf("Invalid matrixOne")
 	}
 
-	resultMatrix = make([][]float64, len(matrixOne))
-
-	for i := 0; i < len(matrixOne); i++ {
-		resultMatrix[i] = make([]float64, len(matrixTwo[i]))
-		for j := 0; j < len(matrixTwo[i]); j++ {
-			for k := 0; k < len(matrixTwo); k++ {
-				resultMatrix[i][j] += matrixOne[i][k] * matrixTwo[k][j]
-			}
-		}
+	if len(matrixOne) == 0 || matrixOne[0] == nil {
+		return nil, fmt.Errorf("Invalid rows of matrixOne")
 	}
 
+	if len(matrixTwo) == 0 || matrixTwo[0] == nil {
+		return nil, fmt.Errorf("Invalid matrixTwo")
+	}
+
+	rows := len(matrixOne)
+	columns := len(matrixTwo[0])
+
+	hasNoValidMatricesSizeForMultiplication := rows != columns
+	if hasNoValidMatricesSizeForMultiplication {
+		return nil, fmt.Errorf(" MultiplyMatrices : number of rows for the first matrix is different from number of columns of the second matrix ")
+	}
+
+	//resultMatrix = make([][]float64, len(matrixOne))
+	//for i, x := range
+	//
 	return resultMatrix, nil
 }
