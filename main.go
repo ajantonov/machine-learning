@@ -7,14 +7,9 @@ import (
 
 func main() {
 
-	matrixX := algebra.CreateMatrix(1, 7)
+	matrixX := algebra.CreateMatrix(1, 2)
 	matrixX[0][0] = 4.0
-	matrixX[0][1] = 4.5
-	matrixX[0][2] = 5.0
-	matrixX[0][3] = 5.5
-	matrixX[0][4] = 6.0
-	matrixX[0][5] = 6.5
-	matrixX[0][6] = 7.0
+	matrixX[0][1] = 5
 
 	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
 	if err != nil {
@@ -22,7 +17,6 @@ func main() {
 	}
 	algebra.PrintMatrix(transposedMatrixX)
 
-	resultMatrix, _ := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
+	resultMatrix, err := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
 	algebra.PrintMatrix(resultMatrix)
-
 }
