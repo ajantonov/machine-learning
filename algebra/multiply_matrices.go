@@ -41,7 +41,9 @@ func MultiplyMatrices(matrixOne [][]float64, matrixTwo [][]float64) (resultMatri
 			for rTwo := 0; rTwo < rowsOfMatrixTwo; rTwo++ {
 				resultMatrix[rOne] = make([]float64, columnsOfMatrixTwo)
 				for cTwo := 0; cTwo < columnsOfMatrixTwo; cTwo++ {
-					resultMatrix[rOne][cTwo] = matrixOne[rOne][cOne] * matrixTwo[rTwo][cTwo]
+					for multiplicationIndex := 0; multiplicationIndex < columnsOfMatrixOne; multiplicationIndex++ {
+						resultMatrix[rOne][cTwo] += matrixOne[rOne][multiplicationIndex] * matrixTwo[multiplicationIndex][cTwo]
+					}
 				}
 			}
 		}

@@ -7,9 +7,10 @@ import (
 
 func main() {
 
-	matrixX := algebra.CreateMatrix(1, 2)
-	matrixX[0][0] = 4.0
-	matrixX[0][1] = 5
+	matrixA := [][]float64{{2, 2}, {2, 2}}
+	matrixB := [][]float64{{2, 2}, {2, 2}}
+
+	matrixX, err := algebra.MultiplyMatrices(matrixA, matrixB)
 
 	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
 	if err != nil {

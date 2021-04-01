@@ -25,10 +25,8 @@ func TestShouldMultiplyMatricesWithOneRowAndOneColumnCorrectly(t *testing.T) {
 	if err != nil {
 		t.Error("Failed to transpose matrix")
 	}
-	PrintMatrix(transposedMatrixX)
 
 	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
-	PrintMatrix(resultMatrix)
 
 	isNotResultValid := resultMatrix[0][0] != 16
 	matrixHasNotOneRow := len(resultMatrix) != 1
@@ -50,10 +48,8 @@ func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
 	if err != nil {
 		t.Error("Failed to transpose matrix")
 	}
-	PrintMatrix(transposedMatrixX)
 
 	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
-	PrintMatrix(resultMatrix)
 
 	isNotResultValid := resultMatrix[0][0] != 16 ||
 		resultMatrix[0][1] != 20 ||
@@ -63,14 +59,46 @@ func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
 	matrixHasNotOneColumn := len(resultMatrix[0]) != 2
 
 	if isNotResultValid || matrixHasNotOneRow || matrixHasNotOneColumn {
-		t.Errorf("Failed to calculate %f ", resultMatrix[0][0])
+		t.Errorf("Failed to calculate multiplication of matrix with one row and two columns!")
+	}
+
+}
+
+func TestShouldMultiplyMatricesWithOneRowAndThreeColumnsCorrectly(t *testing.T) {
+
+	matrixX := CreateMatrix(1, 3)
+	matrixX[0][0] = 4.0
+	matrixX[0][1] = 5.0
+	matrixX[0][2] = 6.0
+
+	transposedMatrixX, err := TransposeMatrix(matrixX)
+	if err != nil {
+		t.Error("Failed to transpose matrix")
+	}
+
+	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
+
+	isNotResultValid := resultMatrix[0][0] != 16 ||
+		resultMatrix[0][1] != 20 ||
+		resultMatrix[0][2] != 24 ||
+		resultMatrix[1][0] != 20 ||
+		resultMatrix[1][1] != 25 ||
+		resultMatrix[1][2] != 30 ||
+		resultMatrix[2][0] != 24 ||
+		resultMatrix[2][1] != 30 ||
+		resultMatrix[2][2] != 36
+
+	matrixHasNotOneRow := len(resultMatrix) != 3
+	matrixHasNotOneColumn := len(resultMatrix[0]) != 3
+
+	if isNotResultValid || matrixHasNotOneRow || matrixHasNotOneColumn {
+		t.Errorf("Failed to calculate matrices with one row and three columns correctly! Valid Result %v Has Rows %v Has Columns %v",
+			isNotResultValid, matrixHasNotOneRow, matrixHasNotOneColumn)
 	}
 
 }
 
 func TestShouldNotMultiplyMatrixWithDifferentLengthOfRowAndColumn(t *testing.T) {
-
-	t.Skip()
 
 	matrixOne := CreateMatrix(1, 7)
 	matrixTwo := CreateMatrix(7, 2)
@@ -83,8 +111,6 @@ func TestShouldNotMultiplyMatrixWithDifferentLengthOfRowAndColumn(t *testing.T) 
 }
 
 func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
-
-	t.Skip()
 
 	multiplicationIsRight := true
 
