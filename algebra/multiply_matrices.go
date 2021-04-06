@@ -20,8 +20,8 @@ func MultiplyMatrices(matrixOne [][]float64, matrixTwo [][]float64) (resultMatri
 		return nil, fmt.Errorf("MultiplyMatrices : invalid rows of matrixTwo")
 	}
 
-	rows := len(matrixOne)
-	columns := len(matrixTwo[0])
+	rows := len(matrixOne[0])
+	columns := len(matrixTwo)
 
 	hasNoValidMatricesSizeForMultiplication := rows != columns
 	if hasNoValidMatricesSizeForMultiplication {

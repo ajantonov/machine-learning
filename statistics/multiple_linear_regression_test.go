@@ -17,7 +17,6 @@ Useful links :
 
 */
 func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
-	t.Skip()
 
 	calculatedCoefficientsAreRight := false
 	betaTwo := float64(0)
