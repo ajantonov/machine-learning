@@ -1,15 +1,16 @@
 package algebra
 
 import (
+	"github.com/ajantonov/machine-learning/algebra"
 	"testing"
 )
 
 func TestShouldRequiresValidSizeOfMatrices(t *testing.T) {
 
-	matrixOne := CreateMatrix(0, 0)
-	matrixTwo := CreateMatrix(0, 0)
+	matrixOne := algebra.CreateMatrix(0, 0)
+	matrixTwo := algebra.CreateMatrix(0, 0)
 
-	_, err := MultiplyMatrices(matrixOne, matrixTwo)
+	_, err := algebra.MultiplyMatrices(matrixOne, matrixTwo)
 
 	if err == nil {
 		t.Error("Invalid validation of input matrices for multiplication!")
@@ -18,15 +19,15 @@ func TestShouldRequiresValidSizeOfMatrices(t *testing.T) {
 
 func TestShouldMultiplyMatricesWithOneRowAndOneColumnCorrectly(t *testing.T) {
 
-	matrixX := CreateMatrix(1, 1)
+	matrixX := algebra.CreateMatrix(1, 1)
 	matrixX[0][0] = 4.0
 
-	transposedMatrixX, err := TransposeMatrix(matrixX)
+	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
 	if err != nil {
 		t.Error("Failed to transpose matrix")
 	}
 
-	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
+	resultMatrix, _ := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
 
 	isNotResultValid := resultMatrix[0][0] != 16
 	matrixHasNotOneRow := len(resultMatrix) != 1
@@ -40,16 +41,16 @@ func TestShouldMultiplyMatricesWithOneRowAndOneColumnCorrectly(t *testing.T) {
 
 func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
 
-	matrixX := CreateMatrix(1, 2)
+	matrixX := algebra.CreateMatrix(1, 2)
 	matrixX[0][0] = 4.0
 	matrixX[0][1] = 5.0
 
-	transposedMatrixX, err := TransposeMatrix(matrixX)
+	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
 	if err != nil {
 		t.Error("Failed to transpose matrix")
 	}
 
-	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
+	resultMatrix, _ := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
 
 	isNotResultValid := resultMatrix[0][0] != 16 ||
 		resultMatrix[0][1] != 20 ||
@@ -66,17 +67,17 @@ func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
 
 func TestShouldMultiplyMatricesWithOneRowAndThreeColumnsCorrectly(t *testing.T) {
 
-	matrixX := CreateMatrix(1, 3)
+	matrixX := algebra.CreateMatrix(1, 3)
 	matrixX[0][0] = 4.0
 	matrixX[0][1] = 5.0
 	matrixX[0][2] = 6.0
 
-	transposedMatrixX, err := TransposeMatrix(matrixX)
+	transposedMatrixX, err := algebra.TransposeMatrix(matrixX)
 	if err != nil {
 		t.Error("Failed to transpose matrix")
 	}
 
-	resultMatrix, _ := MultiplyMatrices(transposedMatrixX, matrixX)
+	resultMatrix, _ := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
 
 	isNotResultValid := resultMatrix[0][0] != 16 ||
 		resultMatrix[0][1] != 20 ||
@@ -100,52 +101,65 @@ func TestShouldMultiplyMatricesWithOneRowAndThreeColumnsCorrectly(t *testing.T) 
 
 func TestShouldMultiply3By3With6By3MatricesCorrectly(t *testing.T) {
 
-	matrixOne := CreateMatrix(3, 3)
-	matrixOne[0][0] = 1.607233
-	matrixOne[0][1] = -0.250638
-	matrixOne[0][2] = -0.000669
-	matrixOne[1][0] = -0.250638
-	matrixOne[1][1] = 0.069809
-	matrixOne[1][2] = -0.000351
-	matrixOne[2][0] = -0.000669
-	matrixOne[2][1] = -0.000351
-	matrixOne[2][2] = 0.000009
+	matrixOne := algebra.CreateMatrix(6, 3)
+	matrixOne[0][0] = 1
+	matrixOne[0][1] = 7
+	matrixOne[0][2] = 560
+	matrixOne[1][0] = 1
+	matrixOne[1][1] = 3
+	matrixOne[1][2] = 220
+	matrixOne[2][0] = 1
+	matrixOne[2][1] = 3
+	matrixOne[2][2] = 340
+	matrixOne[3][0] = 1
+	matrixOne[3][1] = 4
+	matrixOne[3][2] = 80
+	matrixOne[4][0] = 1
+	matrixOne[4][1] = 6
+	matrixOne[4][2] = 150
+	matrixOne[5][0] = 1
+	matrixOne[5][1] = 7
+	matrixOne[5][2] = 330
 
-	matrixTwo := CreateMatrix(6, 3)
-	matrixTwo[0][0] = 1
-	matrixTwo[0][1] = 7
-	matrixTwo[0][2] = 560
-	matrixTwo[1][0] = 1
-	matrixTwo[1][1] = 3
-	matrixTwo[1][2] = 220
-	matrixTwo[2][0] = 1
-	matrixTwo[2][1] = 3
-	matrixTwo[2][2] = 340
-	matrixTwo[3][0] = 1
-	matrixTwo[3][1] = 4
-	matrixTwo[3][2] = 80
-	matrixTwo[4][0] = 1
-	matrixTwo[4][1] = 6
-	matrixTwo[4][2] = 150
-	matrixTwo[5][0] = 1
-	matrixTwo[5][1] = 7
-	matrixTwo[5][2] = 330
+	matrixTwo := algebra.CreateMatrix(3, 3)
+	matrixTwo[0][0] = 1.607233
+	matrixTwo[0][1] = -0.250638
+	matrixTwo[0][2] = -0.000669
+	matrixTwo[1][0] = -0.250638
+	matrixTwo[1][1] = 0.069809
+	matrixTwo[1][2] = -0.000351
+	matrixTwo[2][0] = -0.000669
+	matrixTwo[2][1] = -0.000351
+	matrixTwo[2][2] = 0.000009
 
-	resultMatrix, _ := MultiplyMatrices(matrixOne, matrixTwo)
+	resultMatrix, err := algebra.MultiplyMatrices(matrixOne, matrixTwo)
+	if err != nil {
+		t.Errorf(err.Error())
+		return
+	}
 
-	PrintMatrix(resultMatrix)
+	algebra.PrintMatrix(resultMatrix)
 
-	isNotResultValid := resultMatrix[0][0] != 16 ||
-		resultMatrix[0][1] != 20 ||
-		resultMatrix[0][2] != 24 ||
-		resultMatrix[1][0] != 20 ||
-		resultMatrix[1][1] != 25 ||
-		resultMatrix[1][2] != 30 ||
-		resultMatrix[2][0] != 24 ||
-		resultMatrix[2][1] != 30 ||
-		resultMatrix[2][2] != 36
+	isNotResultValid := !algebra.FloatEquals(resultMatrix[0][0], -0.521873) ||
+		!algebra.FloatEquals(resultMatrix[0][1], 0.041465) ||
+		!algebra.FloatEquals(resultMatrix[0][2], 0.001914) ||
+		!algebra.FloatEquals(resultMatrix[1][0], 0.708139) ||
+		!algebra.FloatEquals(resultMatrix[1][1], -0.118431) ||
+		!algebra.FloatEquals(resultMatrix[1][2], 0.000258) ||
+		!algebra.FloatEquals(resultMatrix[2][0], 0.627859) ||
+		!algebra.FloatEquals(resultMatrix[2][1], -0.160551) ||
+		!algebra.FloatEquals(resultMatrix[2][2], 0.001338) ||
+		!algebra.FloatEquals(resultMatrix[3][0], 0.551161) ||
+		!algebra.FloatEquals(resultMatrix[3][1], 0.000518) ||
+		!algebra.FloatEquals(resultMatrix[3][2], -0.001353) ||
+		!algebra.FloatEquals(resultMatrix[4][0], 0.003055) ||
+		!algebra.FloatEquals(resultMatrix[4][1], 0.115566) ||
+		!algebra.FloatEquals(resultMatrix[4][2], -0.001425) ||
+		!algebra.FloatEquals(resultMatrix[5][0], -0.368003) ||
+		!algebra.FloatEquals(resultMatrix[5][1], 0.122195) ||
+		!algebra.FloatEquals(resultMatrix[5][2], -0.000156)
 
-	matrixHasNotThreeRows := len(resultMatrix) != 3
+	matrixHasNotThreeRows := len(resultMatrix) != 6
 	matrixHasNotThreeColumns := len(resultMatrix[0]) != 3
 
 	if isNotResultValid || matrixHasNotThreeRows || matrixHasNotThreeColumns {
@@ -156,13 +170,13 @@ func TestShouldMultiply3By3With6By3MatricesCorrectly(t *testing.T) {
 }
 func TestShouldNotMultiplyMatrixWithDifferentLengthOfRowAndColumn(t *testing.T) {
 
-	matrixOne := CreateMatrix(1, 7)
-	matrixTwo := CreateMatrix(7, 2)
+	matrixOne := algebra.CreateMatrix(1, 7)
+	matrixTwo := algebra.CreateMatrix(7, 2)
 
-	_, err := MultiplyMatrices(matrixOne, matrixTwo)
+	_, err := algebra.MultiplyMatrices(matrixOne, matrixTwo)
 
-	if err == nil {
-		t.Error("Invalid result from wrong matrix multiplication !")
+	if err != nil {
+		t.Error(err.Error())
 	}
 }
 
@@ -173,7 +187,7 @@ func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
 	matrixA := [][]float64{{2, 2}, {2, 2}}
 	matrixB := [][]float64{{2, 2}, {2, 2}}
 
-	matrixResult, err := MultiplyMatrices(matrixA, matrixB)
+	matrixResult, err := algebra.MultiplyMatrices(matrixA, matrixB)
 
 	if err != nil {
 		t.Error("Failed to multiply matrices : ", err)
@@ -181,7 +195,7 @@ func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
 
 	for i, row := range matrixResult {
 		for j := range row {
-			if !FloatEquals(matrixResult[i][j], 8) {
+			if !algebra.FloatEquals(matrixResult[i][j], 8) {
 				multiplicationIsRight = false
 			}
 		}
@@ -197,23 +211,23 @@ func TestShouldMultiply2by2MatricesCorrectly(t *testing.T) {
 	matrixA := [][]float64{{1, 2}, {3, 4}}
 	matrixB := [][]float64{{1, 2}, {3, 4}}
 
-	matrixResult, err := MultiplyMatrices(matrixA, matrixB)
+	matrixResult, err := algebra.MultiplyMatrices(matrixA, matrixB)
 
 	if err != nil {
 		t.Error("Failed to multiply matrices : ", err)
 	}
 
-	if !FloatEquals(matrixResult[0][0], 7) ||
-		!FloatEquals(matrixResult[0][1], 10) ||
-		!FloatEquals(matrixResult[1][0], 15) ||
-		!FloatEquals(matrixResult[1][1], 22) {
+	if !algebra.FloatEquals(matrixResult[0][0], 7) ||
+		!algebra.FloatEquals(matrixResult[0][1], 10) ||
+		!algebra.FloatEquals(matrixResult[1][0], 15) ||
+		!algebra.FloatEquals(matrixResult[1][1], 22) {
 		t.Error("Failed to multiply two matrices with size 2x2!")
 	}
 }
 
 func TestShouldMultiplyNonSquareMatricesCorrectly(t *testing.T) {
 
-	matrixX := CreateMatrix(6, 3)
+	matrixX := algebra.CreateMatrix(6, 3)
 	matrixX[0][0] = 1
 	matrixX[0][1] = 7
 	matrixX[0][2] = 560
@@ -233,7 +247,7 @@ func TestShouldMultiplyNonSquareMatricesCorrectly(t *testing.T) {
 	matrixX[5][1] = 7
 	matrixX[5][2] = 330
 
-	transposedMatrixX := CreateMatrix(3, 6)
+	transposedMatrixX := algebra.CreateMatrix(3, 6)
 	transposedMatrixX[0][0] = 1
 	transposedMatrixX[0][1] = 1
 	transposedMatrixX[0][2] = 1
@@ -253,21 +267,21 @@ func TestShouldMultiplyNonSquareMatricesCorrectly(t *testing.T) {
 	transposedMatrixX[2][4] = 150
 	transposedMatrixX[2][5] = 330
 
-	matrixResult, err := MultiplyMatrices(transposedMatrixX, matrixX)
+	matrixResult, err := algebra.MultiplyMatrices(transposedMatrixX, matrixX)
 
 	if err != nil {
 		t.Error("Failed to multiply matrices : ", err)
 	}
 
-	if !FloatEquals(matrixResult[0][0], 6) ||
-		!FloatEquals(matrixResult[0][1], 30) ||
-		!FloatEquals(matrixResult[0][2], 1680) ||
-		!FloatEquals(matrixResult[1][0], 30) ||
-		!FloatEquals(matrixResult[1][1], 168) ||
-		!FloatEquals(matrixResult[1][2], 9130) ||
-		!FloatEquals(matrixResult[2][0], 1680) ||
-		!FloatEquals(matrixResult[2][1], 9130) ||
-		!FloatEquals(matrixResult[2][2], 615400) {
+	if !algebra.FloatEquals(matrixResult[0][0], 6) ||
+		!algebra.FloatEquals(matrixResult[0][1], 30) ||
+		!algebra.FloatEquals(matrixResult[0][2], 1680) ||
+		!algebra.FloatEquals(matrixResult[1][0], 30) ||
+		!algebra.FloatEquals(matrixResult[1][1], 168) ||
+		!algebra.FloatEquals(matrixResult[1][2], 9130) ||
+		!algebra.FloatEquals(matrixResult[2][0], 1680) ||
+		!algebra.FloatEquals(matrixResult[2][1], 9130) ||
+		!algebra.FloatEquals(matrixResult[2][2], 615400) {
 		t.Error("Failed to multiply two matrices with size 2x2!")
 	}
 }

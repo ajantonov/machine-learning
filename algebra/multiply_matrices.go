@@ -25,7 +25,8 @@ func MultiplyMatrices(matrixOne [][]float64, matrixTwo [][]float64) (resultMatri
 
 	hasNoValidMatricesSizeForMultiplication := rows != columns
 	if hasNoValidMatricesSizeForMultiplication {
-		return nil, fmt.Errorf(" MultiplyMatrices : number of rows for the first matrix is different from number of columns of the second matrix ")
+		return nil, fmt.Errorf(" MultiplyMatrices : number of rows = %d for the first matrix is different from number of columns = %d of the second matrix ",
+			rows, columns)
 	}
 
 	rowsOfMatrixOne := len(matrixOne)

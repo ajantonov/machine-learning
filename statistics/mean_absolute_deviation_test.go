@@ -1,6 +1,7 @@
 package statistics
 
 import (
+	"github.com/ajantonov/machine-learning/statistics"
 	"testing"
 )
 
@@ -14,7 +15,7 @@ func TestMeanAbsoluteDeviationShouldReturnErrorWhenSamplesIsZero(t *testing.T) {
 	samples := []float64{1, 3, 5}
 	mean := float64(3)
 
-	_, err := MeanAbsoluteDeviation(samples, mean)
+	_, err := statistics.MeanAbsoluteDeviation(samples, mean)
 
 	if err != nil {
 		t.Error("Failed to return error when array length is zero! ")
@@ -26,9 +27,9 @@ func TestMeanAbsoluteDeviationShouldReturnValidResult(t *testing.T) {
 	samples := []float64{1, 4, 4}
 	mean := float64(3)
 
-	result, _ := MeanAbsoluteDeviation(samples, mean)
+	result, _ := statistics.MeanAbsoluteDeviation(samples, mean)
 
-	if !FloatEqualsWithEpsilon(result, 1.33, 0.004) {
+	if !statistics.FloatEqualsWithEpsilon(result, 1.33, 0.004) {
 		t.Errorf("Failed to return valid result! Expected value 1.33 result : %f !", result)
 	}
 }
