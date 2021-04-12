@@ -2,6 +2,9 @@ package statistics
 
 import "errors"
 
+/* LinearRegression function calculates beta coefficients for one predictor x and response y
+
+ */
 func LinearRegression(x []float64, y []float64) (slope float64, intercept float64, err error) {
 
 	if 0 == len(x) {
