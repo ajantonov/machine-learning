@@ -2,6 +2,7 @@ package statistics_tests
 
 import (
 	"github.com/ajantonov/machine-learning/algebra"
+	"github.com/ajantonov/machine-learning/statistics"
 	"testing"
 )
 
@@ -43,34 +44,9 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 	matrixY[3][0] = 67
 	matrixY[4][0] = 117
 
-	matrixTransposedOfX, err := algebra.TransposeMatrix(matrixX)
+	matrixResult, err := statistics.MultipleRegression(matrixX, matrixY)
 	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	matrixTransposedOfXByX, err := algebra.MultiplyMatrices(matrixTransposedOfX, matrixX)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	matrixInversedOfTransposedOfXByX, err := algebra.InverseMatrix(matrixTransposedOfXByX)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	matrixHat, err := algebra.MultiplyMatrices(matrixInversedOfTransposedOfXByX, matrixTransposedOfX)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	matrixResult, err := algebra.MultiplyMatrices(matrixHat, matrixY)
-	if err != nil {
-		t.Error(err)
-		return
+		t.Error("Failed to calulate beta coefficients ", err.Error())
 	}
 	algebra.PrintMatrix(matrixResult)
 
