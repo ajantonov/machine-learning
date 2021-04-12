@@ -1,6 +1,9 @@
-package algebra
+package algebra_tests
 
-import "testing"
+import (
+	"github.com/ajantonov/machine-learning/algebra"
+	"testing"
+)
 
 func TestAddMatrixOn2By2ShouldBeSuccessful(t *testing.T) {
 
@@ -8,7 +11,7 @@ func TestAddMatrixOn2By2ShouldBeSuccessful(t *testing.T) {
 
 	matrixB := [][]float64{{2, 2}, {2, 2}}
 
-	matrixC := AddMatrices(matrixA, matrixB)
+	matrixC := algebra.AddMatrices(matrixA, matrixB)
 
 	validAddition := true
 	for i := 0; i < len(matrixC); i++ {
@@ -31,7 +34,7 @@ func TestAddMatrixOn3By3ShouldBeSuccessful(t *testing.T) {
 
 	matrixB := [][]float64{{2, 2, 2}, {2, 2, 2}, {2, 2, 2}}
 
-	matrixC := AddMatrices(matrixA, matrixB)
+	matrixC := algebra.AddMatrices(matrixA, matrixB)
 
 	validAddition := true
 	for i := 0; i < len(matrixC); i++ {

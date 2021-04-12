@@ -1,6 +1,7 @@
-package statistics
+package statistics_tests
 
 import (
+	"github.com/ajantonov/machine-learning/statistics"
 	"testing"
 )
 
@@ -22,7 +23,7 @@ func TestTrimmedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 	var values []float64
 	trimValue := uint(0)
 
-	_, err := TrimmedMean(values, trimValue)
+	_, err := statistics.TrimmedMean(values, trimValue)
 
 	if err == nil {
 		t.Error("TrimmedMean failed to return error, when input parameter is invalid!")
@@ -34,7 +35,7 @@ func TestTrimmedMeanShouldReturnErrorWhenTrimValueIsOneAndSizeOfInputArrayIsTwo(
 	var values = []float64{0, 1}
 	trimValue := uint(1)
 
-	_, err := TrimmedMean(values, trimValue)
+	_, err := statistics.TrimmedMean(values, trimValue)
 
 	if nil == err {
 		t.Error("TrimmedMean function should return error, when trim value is 1 and size of array is 2!")
@@ -46,7 +47,7 @@ func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrim
 	var values = []float64{0, 1, 2}
 	trimValue := uint(2)
 
-	_, err := TrimmedMean(values, trimValue)
+	_, err := statistics.TrimmedMean(values, trimValue)
 
 	if err == nil {
 		t.Error("TrimmedMean function failed to return error, when trim value is too big regarding input array!")
@@ -58,9 +59,9 @@ func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrim
 	var values = []float64{0, 1, 2}
 	trimValue := uint(1)
 
-	result, err := TrimmedMean(values, trimValue)
+	result, err := statistics.TrimmedMean(values, trimValue)
 
-	if FloatEquals(1.01, result) {
+	if statistics.FloatEquals(1.01, result) {
 		t.Errorf("TrimmedMean function calculate %f for { 0, 1, 2 }, expected 1 ! Error %s ", result, err)
 	}
 }
@@ -70,9 +71,9 @@ func TestTrimmedMeanShouldReturnTwoPointFiveAndTrimValueIsOne(t *testing.T) {
 	var values = []float64{0, 2, 4, 3}
 	trimValue := uint(1)
 
-	result, _ := TrimmedMean(values, trimValue)
+	result, _ := statistics.TrimmedMean(values, trimValue)
 
-	if !FloatEquals(2.5, result) {
+	if !statistics.FloatEquals(2.5, result) {
 		t.Errorf("TrimmedMean function calculate %f for { 0, 2, 4, 3 }, expected 2.5", result)
 	}
 

@@ -1,6 +1,9 @@
-package algebra
+package algebra_tests
 
-import "testing"
+import (
+	"github.com/ajantonov/machine-learning/algebra"
+	"testing"
+)
 
 func TestShouldReturnNegativeMatrix2By2(t *testing.T) {
 
@@ -8,7 +11,7 @@ func TestShouldReturnNegativeMatrix2By2(t *testing.T) {
 
 	matrix := [][]float64{{1, 1}, {1, 1}}
 
-	resultMatrix := NegativeMatrix(matrix)
+	resultMatrix := algebra.NegativeMatrix(matrix)
 	for i, row := range resultMatrix {
 		for j := range row {
 			if resultMatrix[i][j] >= 0 {
@@ -29,7 +32,7 @@ func TestShouldReturnNegativeMatrix3By3(t *testing.T) {
 
 	matrix := [][]float64{{3, 3, 3}, {3, 3, 3}, {3, 3, 3}}
 
-	resultMatrix := NegativeMatrix(matrix)
+	resultMatrix := algebra.NegativeMatrix(matrix)
 	for i, row := range resultMatrix {
 		for j := range row {
 			if resultMatrix[i][j] >= 0 {
