@@ -1,6 +1,9 @@
-package statistics
+package statistics_tests
 
-import "testing"
+import (
+	"github.com/ajantonov/machine-learning/statistics"
+	"testing"
+)
 
 /*
 
@@ -19,7 +22,7 @@ func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 	var inputs []float64
 	var weights []float64
 
-	_, err := WeightedMean(inputs, weights)
+	_, err := statistics.WeightedMean(inputs, weights)
 
 	if nil == err {
 		t.Error("Failed to return error, when input array is empty!")
@@ -30,7 +33,7 @@ func TestWeightedMeanShouldReturnErrorWhenWeightsArrayIsEmpty(t *testing.T) {
 	var inputs = []float64{1}
 	var weights []float64
 
-	_, err := WeightedMean(inputs, weights)
+	_, err := statistics.WeightedMean(inputs, weights)
 
 	if nil == err {
 		t.Error("Failed to return error, when weights array is empty!")
@@ -41,7 +44,7 @@ func TestWeightedMeanShouldReturnErrorWhenSumOfAllWeightIsZero(t *testing.T) {
 	var inputs = []float64{1, 2, 3}
 	var weights = []float64{1, -1, 0}
 
-	_, err := WeightedMean(inputs, weights)
+	_, err := statistics.WeightedMean(inputs, weights)
 
 	if nil == err {
 		t.Error("Failed to return error, when sum of all weights is empty!")
@@ -52,7 +55,7 @@ func TestWeightedMeanShouldReturnErrorWhenSizeOfArraysIsDifferent(t *testing.T) 
 	var inputs = []float64{1, 2}
 	var weights = []float64{1, 1, 0}
 
-	_, err := WeightedMean(inputs, weights)
+	_, err := statistics.WeightedMean(inputs, weights)
 
 	if nil == err {
 		t.Error("Failed to return error, when size of input arrays is different!")
@@ -64,9 +67,9 @@ func TestWeightedMeanShouldReturnOne(t *testing.T) {
 	var inputs = []float64{1}
 	var weights = []float64{1}
 
-	result, _ := WeightedMean(inputs, weights)
+	result, _ := statistics.WeightedMean(inputs, weights)
 
-	if !FloatEquals(1, result) {
+	if !statistics.FloatEquals(1, result) {
 		t.Errorf("WeightedMean expected to return 1, but returned %f ", result)
 	}
 }
@@ -76,9 +79,9 @@ func TestWeightedMeanShouldReturnTwoPointSix(t *testing.T) {
 	var inputs = []float64{6, 5, 4, 3, 2, 1}
 	var weights = []float64{1, 2, 3, 4, 5, 6}
 
-	result, _ := WeightedMean(inputs, weights)
+	result, _ := statistics.WeightedMean(inputs, weights)
 
-	if !FloatEquals(2.666667, result) {
+	if !statistics.FloatEquals(2.666667, result) {
 		t.Errorf("WeightedMean expected to return 2.666667 , but returned %f ", result)
 	}
 }

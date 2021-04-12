@@ -1,4 +1,4 @@
-package statistics
+package statistics_tests
 
 import (
 	"github.com/ajantonov/machine-learning/statistics"
@@ -16,7 +16,7 @@ func TestMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
 	var values []float64
 
-	_, err := Mean(values)
+	_, err := statistics.Mean(values)
 
 	if err == nil {
 		t.Error("Mean function should return error!")
@@ -27,7 +27,7 @@ func TestMeanShouldReturnOneWhenInputArrayContainsValueOne(t *testing.T) {
 
 	values := []float64{1}
 
-	result, _ := Mean(values)
+	result, _ := statistics.Mean(values)
 
 	if float64(1) != result {
 		t.Errorf("Mean function should return 1 when array contains { 1 }. The result is %f ", result)

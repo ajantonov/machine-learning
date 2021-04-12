@@ -1,4 +1,4 @@
-package algebra
+package algebra_tests
 
 import (
 	"github.com/ajantonov/machine-learning/algebra"

@@ -1,4 +1,4 @@
-package statistics
+package statistics_tests
 
 import (
 	"github.com/ajantonov/machine-learning/algebra"
