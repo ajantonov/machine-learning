@@ -17,7 +17,7 @@ Useful links :
 func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 
 	matrixX := algebra.CreateMatrix(5, 3)
-	matrixX[0][0] = 0
+	matrixX[0][0] = 1
 	matrixX[0][1] = 0
 	matrixX[0][2] = 1
 
@@ -25,24 +25,24 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 	matrixX[1][1] = 0
 	matrixX[1][2] = 1
 
-	matrixX[2][0] = 0
+	matrixX[2][0] = 1
 	matrixX[2][1] = 1
 	matrixX[2][2] = 1
 
 	matrixX[3][0] = 1
-	matrixX[3][1] = 1
+	matrixX[3][1] = 2
 	matrixX[3][2] = 1
 
-	matrixX[4][0] = 2
+	matrixX[4][0] = 1
 	matrixX[4][1] = 1
-	matrixX[4][2] = 1
+	matrixX[4][2] = 2
 
 	matrixY := algebra.CreateMatrix(5, 1)
-	matrixY[0][0] = 7
+	matrixY[0][0] = 57
 	matrixY[1][0] = 57
-	matrixY[2][0] = 17
-	matrixY[3][0] = 67
-	matrixY[4][0] = 117
+	matrixY[2][0] = 67
+	matrixY[3][0] = 77
+	matrixY[4][0] = 74
 
 	matrixResult, err := statistics.MultipleRegression(matrixX, matrixY)
 	if err != nil {
@@ -62,6 +62,60 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 /*
 	Test with multiple regression model : y = 50 + x1 + x2 + x1x2
 */
+func TestShouldCalculateMultipleRegressionWithThreePredictors(t *testing.T) {
+
+	matrixX := algebra.CreateMatrix(5, 4)
+	matrixX[0][0] = 1
+	matrixX[0][1] = 0
+	matrixX[0][2] = 0
+	matrixX[0][3] = 0
+
+	matrixX[1][0] = 1
+	matrixX[1][1] = 0
+	matrixX[1][2] = 1
+	matrixX[1][3] = 0
+
+	matrixX[2][0] = 1
+	matrixX[2][1] = 1
+	matrixX[2][2] = 1
+	matrixX[2][3] = 1
+
+	matrixX[3][0] = 1
+	matrixX[3][1] = 1
+	matrixX[3][2] = 2
+	matrixX[3][3] = 2
+
+	matrixX[4][0] = 1
+	matrixX[4][1] = 2
+	matrixX[4][2] = 2
+	matrixX[4][3] = 4
+
+	matrixY := algebra.CreateMatrix(5, 1)
+	matrixY[0][0] = 50
+	matrixY[1][0] = 51
+	matrixY[2][0] = 53
+	matrixY[3][0] = 55
+	matrixY[4][0] = 58
+
+	matrixResult, err := statistics.MultipleRegression(matrixX, matrixY)
+	if err != nil {
+		t.Error("Failed to calulate beta coefficients ", err.Error())
+	}
+	algebra.PrintMatrix(matrixResult)
+
+	if !algebra.FloatEquals(matrixResult[0][0], 50) ||
+		!algebra.FloatEquals(matrixResult[1][0], 1) ||
+		!algebra.FloatEquals(matrixResult[2][0], 1) ||
+		!algebra.FloatEquals(matrixResult[2][0], 1) {
+		t.Errorf("Failed to calculate multiple regression expected [ 50, 1, 1, 1] result [ %f , %f, %f, %f] ",
+			matrixResult[0][0], matrixResult[1][0], matrixResult[2][0], matrixResult[3][0])
+	}
+
+	// План за действие за тестване защо не връща правилен резултат !!!
+	// 1. Проверка на резултата след всяка матрична операция
+
+}
+
 /*
 	Test with multiple regression model : y = - 2.68 + 9.5x
 */
