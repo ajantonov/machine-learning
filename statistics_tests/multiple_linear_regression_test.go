@@ -12,6 +12,48 @@ Useful links :
 */
 
 /*
+	Test with multiple regression model : y = - 2.68 + 9.5x
+*/
+func TestShouldCalculateMultipleRegressionWithOnePredictor(t *testing.T) {
+
+	matrixX := algebra.CreateMatrix(5, 2)
+	matrixX[0][0] = 1
+	matrixX[0][1] = 0
+
+	matrixX[1][0] = 1
+	matrixX[1][1] = 1
+
+	matrixX[2][0] = 1
+	matrixX[2][1] = 2
+
+	matrixX[3][0] = 1
+	matrixX[3][1] = 3
+
+	matrixX[4][0] = 1
+	matrixX[4][1] = 4
+
+	matrixY := algebra.CreateMatrix(5, 1)
+	matrixY[0][0] = -2.68
+	matrixY[1][0] = 6.82
+	matrixY[2][0] = 16.32
+	matrixY[3][0] = 25.82
+	matrixY[4][0] = 35.32
+
+	matrixResult, err := statistics.MultipleRegression(matrixX, matrixY)
+	if err != nil {
+		t.Error("Failed to calculate beta coefficients ", err.Error())
+	}
+	algebra.PrintMatrix(matrixResult)
+
+	if !algebra.FloatEquals(matrixResult[0][0], -2.68) ||
+		!algebra.FloatEquals(matrixResult[1][0], 9.5) {
+		t.Errorf("Failed to calculate multiple regression expected [ 50, 1, 1, 1] result [ %f , %f, %f, %f] ",
+			matrixResult[0][0], matrixResult[1][0], matrixResult[2][0], matrixResult[3][0])
+	}
+
+}
+
+/*
 	Test with multiple regression model with two predictors : y = 50 + 10x1 + 7x2
 */
 func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
@@ -99,7 +141,7 @@ func TestShouldCalculateMultipleRegressionWithThreePredictors(t *testing.T) {
 
 	matrixResult, err := statistics.MultipleRegression(matrixX, matrixY)
 	if err != nil {
-		t.Error("Failed to calulate beta coefficients ", err.Error())
+		t.Error("Failed to calculate beta coefficients ", err.Error())
 	}
 	algebra.PrintMatrix(matrixResult)
 
@@ -111,11 +153,4 @@ func TestShouldCalculateMultipleRegressionWithThreePredictors(t *testing.T) {
 			matrixResult[0][0], matrixResult[1][0], matrixResult[2][0], matrixResult[3][0])
 	}
 
-	// План за действие за тестване защо не връща правилен резултат !!!
-	// 1. Проверка на резултата след всяка матрична операция
-
 }
-
-/*
-	Test with multiple regression model : y = - 2.68 + 9.5x
-*/
