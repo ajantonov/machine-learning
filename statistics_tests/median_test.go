@@ -17,6 +17,8 @@ Median Unit Tests
 
 func TestMedianShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
+	t.Parallel()
+
 	var values []float64
 
 	_, err := statistics.Median(values)
@@ -27,6 +29,8 @@ func TestMedianShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 }
 
 func TestMedianShouldReturnTheOnlyElementIntoInputArray(t *testing.T) {
+
+	t.Parallel()
 
 	var values = []float64{1}
 
@@ -39,6 +43,8 @@ func TestMedianShouldReturnTheOnlyElementIntoInputArray(t *testing.T) {
 
 func TestMedianShouldReturnMiddleValueElementWhenArrayIsOdd(t *testing.T) {
 
+	t.Parallel()
+
 	values := []float64{1, 3, 3, 6, 7, 8, 9}
 
 	result, _ := statistics.Median(values)
@@ -50,6 +56,8 @@ func TestMedianShouldReturnMiddleValueElementWhenArrayIsOdd(t *testing.T) {
 
 func TestMedianShouldReturnMiddleValueElementWhenArrayIsOddAndNotSorted(t *testing.T) {
 
+	t.Parallel()
+
 	values := []float64{1, 6, 3, 3, 7, 8, 9}
 
 	result, _ := statistics.Median(values)
@@ -60,6 +68,8 @@ func TestMedianShouldReturnMiddleValueElementWhenArrayIsOddAndNotSorted(t *testi
 }
 
 func TestMedianShouldReturnMeanOfTheMiddleTwoElementWhenArrayIsEven(t *testing.T) {
+
+	t.Parallel()
 
 	values := []float64{1, 2, 3, 4, 5, 6, 8, 9}
 

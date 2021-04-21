@@ -6,6 +6,7 @@ import (
 )
 
 func TestAddMatrixOn2By2ShouldBeSuccessful(t *testing.T) {
+	t.Parallel()
 
 	matrixA := [][]float64{{1, 1}, {1, 1}}
 
@@ -29,6 +30,7 @@ func TestAddMatrixOn2By2ShouldBeSuccessful(t *testing.T) {
 }
 
 func TestAddMatrixOn3By3ShouldBeSuccessful(t *testing.T) {
+	t.Parallel()
 
 	matrixA := [][]float64{{1, 1, 1}, {1, 1, 1}, {1, 1, 1}}
 

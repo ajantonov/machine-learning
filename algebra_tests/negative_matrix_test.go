@@ -7,6 +7,8 @@ import (
 
 func TestShouldReturnNegativeMatrix2By2(t *testing.T) {
 
+	t.Parallel()
+
 	isNegative := true
 
 	matrix := [][]float64{{1, 1}, {1, 1}}
@@ -27,6 +29,8 @@ func TestShouldReturnNegativeMatrix2By2(t *testing.T) {
 }
 
 func TestShouldReturnNegativeMatrix3By3(t *testing.T) {
+
+	t.Parallel()
 
 	isNegative := true
 

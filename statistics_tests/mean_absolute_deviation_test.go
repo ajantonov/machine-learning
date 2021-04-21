@@ -12,6 +12,8 @@ MeanAbsoluteDeviation Unit Tests
 **/
 func TestMeanAbsoluteDeviationShouldReturnErrorWhenSamplesIsZero(t *testing.T) {
 
+	t.Parallel()
+
 	samples := []float64{1, 3, 5}
 	mean := float64(3)
 
@@ -23,6 +25,8 @@ func TestMeanAbsoluteDeviationShouldReturnErrorWhenSamplesIsZero(t *testing.T) {
 }
 
 func TestMeanAbsoluteDeviationShouldReturnValidResult(t *testing.T) {
+
+	t.Parallel()
 
 	samples := []float64{1, 4, 4}
 	mean := float64(3)

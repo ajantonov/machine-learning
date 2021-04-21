@@ -7,6 +7,8 @@ import (
 
 func TestShouldTransposeMatrix2By2(t *testing.T) {
 
+	t.Parallel()
+
 	isValidOperation := false
 
 	var matrix = algebra.CreateMatrix(2, 3)
@@ -33,6 +35,9 @@ func TestShouldTransposeMatrix2By2(t *testing.T) {
 }
 
 func TestShouldTransposeMatrix3By3(t *testing.T) {
+
+	t.Parallel()
+
 	isValidOperation := false
 
 	var matrix = algebra.CreateMatrix(3, 3)

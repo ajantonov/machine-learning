@@ -20,6 +20,8 @@ Trimmed Mean Unit Tests
 
 func TestTrimmedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
+	t.Parallel()
+
 	var values []float64
 	trimValue := uint(0)
 
@@ -31,6 +33,8 @@ func TestTrimmedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 }
 
 func TestTrimmedMeanShouldReturnErrorWhenTrimValueIsOneAndSizeOfInputArrayIsTwo(t *testing.T) {
+
+	t.Parallel()
 
 	var values = []float64{0, 1}
 	trimValue := uint(1)
@@ -44,6 +48,8 @@ func TestTrimmedMeanShouldReturnErrorWhenTrimValueIsOneAndSizeOfInputArrayIsTwo(
 
 func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrimValueIsTwo(t *testing.T) {
 
+	t.Parallel()
+
 	var values = []float64{0, 1, 2}
 	trimValue := uint(2)
 
@@ -56,6 +62,8 @@ func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrim
 
 func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrimValueIsOne(t *testing.T) {
 
+	t.Parallel()
+
 	var values = []float64{0, 1, 2}
 	trimValue := uint(1)
 
@@ -67,6 +75,8 @@ func TestTrimmedMeanShouldReturnOneWhenInputArrayContainsRangeOfZeroToTwoAndTrim
 }
 
 func TestTrimmedMeanShouldReturnTwoPointFiveAndTrimValueIsOne(t *testing.T) {
+
+	t.Parallel()
 
 	var values = []float64{0, 2, 4, 3}
 	trimValue := uint(1)

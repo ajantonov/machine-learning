@@ -16,6 +16,8 @@ Useful links :
 */
 func TestShouldCalculateMultipleRegressionWithOnePredictor(t *testing.T) {
 
+	t.Parallel()
+
 	matrixX := algebra.CreateMatrix(5, 2)
 	matrixX[0][0] = 1
 	matrixX[0][1] = 0
@@ -57,6 +59,8 @@ func TestShouldCalculateMultipleRegressionWithOnePredictor(t *testing.T) {
 	Test with multiple regression model with two predictors : y = 50 + 10x1 + 7x2
 */
 func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(5, 3)
 	matrixX[0][0] = 1
@@ -105,6 +109,8 @@ func TestShouldCalculateMultipleRegressionWithTwoPredictors(t *testing.T) {
 	Test with multiple regression model : y = 50 + x1 + x2 + x1x2
 */
 func TestShouldCalculateMultipleRegressionWithThreePredictors(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(5, 4)
 	matrixX[0][0] = 1

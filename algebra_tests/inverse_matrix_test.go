@@ -6,6 +6,7 @@ import (
 )
 
 func TestShouldInvert2By2MatrixCorrectly(t *testing.T) {
+	t.Parallel()
 
 	isValidOperation := false
 
@@ -33,6 +34,7 @@ func TestShouldInvert2By2MatrixCorrectly(t *testing.T) {
 }
 
 func TestShouldInvert3By3MatrixCorrectly(t *testing.T) {
+	t.Parallel()
 
 	isValidOperation := false
 
