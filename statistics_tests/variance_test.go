@@ -13,6 +13,8 @@ Variance Unit Tests
 **/
 func TestVarianceShouldFailWhenHasSmallerOrEqualThanOneSample(t *testing.T) {
 
+	t.Parallel()
+
 	var mean float64
 	var samples = []float64{1}
 
@@ -25,6 +27,8 @@ func TestVarianceShouldFailWhenHasSmallerOrEqualThanOneSample(t *testing.T) {
 
 func TestVarianceShouldReturnValidResponseForTwoSamples(t *testing.T) {
 
+	t.Parallel()
+
 	var mean float64 = 1
 	var samples = []float64{1, 1}
 
@@ -36,6 +40,8 @@ func TestVarianceShouldReturnValidResponseForTwoSamples(t *testing.T) {
 }
 
 func TestVarianceShouldReturnValidResponseForMoreSamples(t *testing.T) {
+
+	t.Parallel()
 
 	var samples = []float64{17, 15, 23, 7, 9, 13}
 	var mean = float64(14)

@@ -6,6 +6,7 @@ import (
 )
 
 func TestShouldCalculate2by2MatrixDeterminantSuccessfully(t *testing.T) {
+	t.Parallel()
 
 	var matrix = algebra.CreateMatrix(2, 2)
 	matrix[0][0] = 1
@@ -20,6 +21,7 @@ func TestShouldCalculate2by2MatrixDeterminantSuccessfully(t *testing.T) {
 }
 
 func TestShouldCalculate3by3MatrixDeterminantSuccessfully(t *testing.T) {
+	t.Parallel()
 
 	var matrix = algebra.CreateMatrix(3, 3)
 	matrix[0][0] = 1

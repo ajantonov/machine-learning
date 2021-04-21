@@ -19,6 +19,8 @@ Trimmed Mean Unit Tests
 
 func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
+	t.Parallel()
+
 	var inputs []float64
 	var weights []float64
 
@@ -30,6 +32,9 @@ func TestWeightedMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 }
 
 func TestWeightedMeanShouldReturnErrorWhenWeightsArrayIsEmpty(t *testing.T) {
+
+	t.Parallel()
+
 	var inputs = []float64{1}
 	var weights []float64
 
@@ -41,6 +46,9 @@ func TestWeightedMeanShouldReturnErrorWhenWeightsArrayIsEmpty(t *testing.T) {
 }
 
 func TestWeightedMeanShouldReturnErrorWhenSumOfAllWeightIsZero(t *testing.T) {
+
+	t.Parallel()
+
 	var inputs = []float64{1, 2, 3}
 	var weights = []float64{1, -1, 0}
 
@@ -52,6 +60,9 @@ func TestWeightedMeanShouldReturnErrorWhenSumOfAllWeightIsZero(t *testing.T) {
 }
 
 func TestWeightedMeanShouldReturnErrorWhenSizeOfArraysIsDifferent(t *testing.T) {
+
+	t.Parallel()
+
 	var inputs = []float64{1, 2}
 	var weights = []float64{1, 1, 0}
 
@@ -64,6 +75,8 @@ func TestWeightedMeanShouldReturnErrorWhenSizeOfArraysIsDifferent(t *testing.T) 
 
 func TestWeightedMeanShouldReturnOne(t *testing.T) {
 
+	t.Parallel()
+
 	var inputs = []float64{1}
 	var weights = []float64{1}
 
@@ -75,6 +88,8 @@ func TestWeightedMeanShouldReturnOne(t *testing.T) {
 }
 
 func TestWeightedMeanShouldReturnTwoPointSix(t *testing.T) {
+
+	t.Parallel()
 
 	var inputs = []float64{6, 5, 4, 3, 2, 1}
 	var weights = []float64{1, 2, 3, 4, 5, 6}

@@ -7,6 +7,8 @@ import (
 
 func TestShouldRequiresValidSizeOfMatrices(t *testing.T) {
 
+	t.Parallel()
+
 	matrixOne := algebra.CreateMatrix(0, 0)
 	matrixTwo := algebra.CreateMatrix(0, 0)
 
@@ -18,6 +20,8 @@ func TestShouldRequiresValidSizeOfMatrices(t *testing.T) {
 }
 
 func TestShouldMultiplyMatricesWithOneRowAndOneColumnCorrectly(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(1, 1)
 	matrixX[0][0] = 4.0
@@ -40,6 +44,8 @@ func TestShouldMultiplyMatricesWithOneRowAndOneColumnCorrectly(t *testing.T) {
 }
 
 func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(1, 2)
 	matrixX[0][0] = 4.0
@@ -66,6 +72,8 @@ func TestShouldMultiplyMatricesWithOneRowAndTwoColumnsCorrectly(t *testing.T) {
 }
 
 func TestShouldMultiplyMatricesWithOneRowAndThreeColumnsCorrectly(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(1, 3)
 	matrixX[0][0] = 4.0
@@ -100,6 +108,8 @@ func TestShouldMultiplyMatricesWithOneRowAndThreeColumnsCorrectly(t *testing.T) 
 }
 
 func TestShouldMultiply3By3With6By3MatricesCorrectly(t *testing.T) {
+
+	t.Parallel()
 
 	matrixOne := algebra.CreateMatrix(6, 3)
 	matrixOne[0][0] = 1
@@ -170,6 +180,8 @@ func TestShouldMultiply3By3With6By3MatricesCorrectly(t *testing.T) {
 }
 func TestShouldNotMultiplyMatrixWithDifferentLengthOfRowAndColumn(t *testing.T) {
 
+	t.Parallel()
+
 	matrixOne := algebra.CreateMatrix(1, 7)
 	matrixTwo := algebra.CreateMatrix(7, 2)
 
@@ -181,6 +193,8 @@ func TestShouldNotMultiplyMatrixWithDifferentLengthOfRowAndColumn(t *testing.T) 
 }
 
 func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
+
+	t.Parallel()
 
 	multiplicationIsRight := true
 
@@ -208,6 +222,8 @@ func TestShouldMultiply2by2MatricesCorrectlyWithTheSameNumbers(t *testing.T) {
 
 func TestShouldMultiply2by2MatricesCorrectly(t *testing.T) {
 
+	t.Parallel()
+
 	matrixA := [][]float64{{1, 2}, {3, 4}}
 	matrixB := [][]float64{{1, 2}, {3, 4}}
 
@@ -226,6 +242,8 @@ func TestShouldMultiply2by2MatricesCorrectly(t *testing.T) {
 }
 
 func TestShouldMultiplyNonSquareMatricesCorrectly(t *testing.T) {
+
+	t.Parallel()
 
 	matrixX := algebra.CreateMatrix(6, 3)
 	matrixX[0][0] = 1

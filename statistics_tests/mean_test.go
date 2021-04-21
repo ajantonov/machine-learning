@@ -14,6 +14,8 @@ Mean Unit Tests
 
 func TestMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 
+	t.Parallel()
+
 	var values []float64
 
 	_, err := statistics.Mean(values)
@@ -24,6 +26,8 @@ func TestMeanShouldReturnErrorWhenInputArrayIsEmpty(t *testing.T) {
 }
 
 func TestMeanShouldReturnOneWhenInputArrayContainsValueOne(t *testing.T) {
+
+	t.Parallel()
 
 	values := []float64{1}
 
@@ -36,6 +40,8 @@ func TestMeanShouldReturnOneWhenInputArrayContainsValueOne(t *testing.T) {
 
 func TestMeanShouldReturnTwoWhenInputArrayContainsRangeFromOneToThree(t *testing.T) {
 
+	t.Parallel()
+
 	values := []float64{1, 2, 3}
 
 	result, _ := statistics.Mean(values)
@@ -46,6 +52,8 @@ func TestMeanShouldReturnTwoWhenInputArrayContainsRangeFromOneToThree(t *testing
 }
 
 func TestScalingDataScalesTheMean(t *testing.T) {
+
+	t.Parallel()
 
 	const scale = float64(2)
 	values := []float64{1 * scale, 2 * scale, 3 * scale}
@@ -60,6 +68,8 @@ func TestScalingDataScalesTheMean(t *testing.T) {
 
 func TestTranslatingDataTranslatesTheMean(t *testing.T) {
 
+	t.Parallel()
+
 	const intercept = float64(2)
 	values := []float64{1 + intercept, 2 + intercept, 3 + intercept}
 
@@ -71,6 +81,8 @@ func TestTranslatingDataTranslatesTheMean(t *testing.T) {
 }
 
 func TestTheSumOfSignedDifferencesFromTheMeanIsZero(t *testing.T) {
+
+	t.Parallel()
 
 	values := []float64{1, 2, 3}
 

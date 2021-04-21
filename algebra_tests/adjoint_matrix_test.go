@@ -6,6 +6,7 @@ import (
 )
 
 func TestShouldCalculateAdjoinMatrix2By2(t *testing.T) {
+	t.Parallel()
 
 	var isValidOperation = false
 

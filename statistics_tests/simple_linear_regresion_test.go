@@ -7,6 +7,8 @@ import (
 
 func TestShouldReturnErrorWhenInputsParameterIsSetToZero(t *testing.T) {
 
+	t.Parallel()
+
 	_, _, err := statistics.LinearRegression(nil, []float64{0})
 
 	if err != nil && err.Error() != "invalid parameter x" {
@@ -15,6 +17,8 @@ func TestShouldReturnErrorWhenInputsParameterIsSetToZero(t *testing.T) {
 }
 
 func TestShouldReturnErrorWhenOutputsParameterIsSetToZero(t *testing.T) {
+
+	t.Parallel()
 
 	_, _, err := statistics.LinearRegression([]float64{0}, nil)
 
@@ -25,6 +29,8 @@ func TestShouldReturnErrorWhenOutputsParameterIsSetToZero(t *testing.T) {
 
 func TestShouldReturnErrorWhenSizeOfInputsAndOutputsIsNotEqual(t *testing.T) {
 
+	t.Parallel()
+
 	_, _, err := statistics.LinearRegression([]float64{1}, []float64{1, 2})
 
 	if err != nil && err.Error() != "different size of x and y" {
@@ -33,6 +39,8 @@ func TestShouldReturnErrorWhenSizeOfInputsAndOutputsIsNotEqual(t *testing.T) {
 }
 
 func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficient(t *testing.T) {
+
+	t.Parallel()
 
 	slope, intercept, err := statistics.LinearRegression([]float64{1, 2, 3}, []float64{3, 6, 9})
 
@@ -45,6 +53,8 @@ func TestLinearRegressionShouldReturnNonZeroAlphaCoefficientAndZeroBetaCoefficie
 
 func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *testing.T) {
 
+	t.Parallel()
+
 	slope, intercept, err := statistics.LinearRegression([]float64{1, 2, 3}, []float64{3, 3, 3})
 
 	if !statistics.FloatEqualsWithEpsilon(slope, float64(0), 0.0001) ||
@@ -55,6 +65,8 @@ func TestLinearRegressionShouldReturnZeroForAlphaAndNonZeroBetaCoefficient(t *te
 }
 
 func TestLinearRegressionShouldReturnNonZeroAlphaAndBetaCoefficients(t *testing.T) {
+
+	t.Parallel()
 
 	x := []float64{23, 26, 30, 34, 43, 48, 52, 57, 58}
 	y := []float64{651, 762, 856, 1063, 1190, 1298, 1421, 1440, 1518}
