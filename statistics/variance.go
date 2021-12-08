@@ -4,7 +4,7 @@ import "errors"
 
 /*
 Variance
-	The sum of differences between every element from samples and mean value divided by size of samples minus.
+	The sum of differences between every element from samples and mean value divided by size of samples minus one.
 */
 func Variance(samples []float64, mean float64) (float64, error) {
 
