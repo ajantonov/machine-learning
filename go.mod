@@ -7,4 +7,7 @@ replace (
 	github.com/ajantonov/machine-learning/statistics => ./statistics
 )
 
-require gonum.org/v1/gonum v0.9.0
+require (
+	github.com/stretchr/testify v1.2.2
+	gonum.org/v1/gonum v0.9.0
+)
